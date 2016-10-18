@@ -13,6 +13,20 @@
         <artifactId>eurekaclinical-parent-standard-deps</artifactId>
         <version>1-Alpha-5</version>
     </parent>
+    <url>https://github.com/eurekaclinical/eurekaclinical-service-template.git</url>
+
+    <scm>
+        <connection>scm:git:https://github.com/eurekaclinical/eurekaclinical-service-template.git</connection>
+        <developerConnection>scm:git:https://github.com/eurekaclinical/eurekaclinical-service-template.git</developerConnection>
+        <url>https://github.com/eurekaclinical/eurekaclinical-service-template.git</url>
+        <tag>HEAD</tag>
+    </scm>
+
+    <issueManagement>
+        <system>GitHub</system>
+        <url>https://github.com/eurekaclinical/eurekaclinical-service-template/issues</url>
+    </issueManagement>
+
     <properties>
         <module-name>eurekaclinical-template</module-name>
         <hibernate-persistence-version>1.0.0.Final</hibernate-persistence-version> <!-- javax.persistence API v2.1 -->
@@ -51,37 +65,37 @@
             </executions>
         </plugin>
         <plugin>
-            <groupId>org.codehaus.mojo</groupId>
-            <artifactId>properties-maven-plugin</artifactId>
-            <version>1.0.0</version>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-resources-plugin</artifactId>
             <executions>
                 <execution>
+                    <id>copy-resources</id>
+                    <phase>process-resources</phase>
                     <goals>
-                        <goal>set-system-properties</goal>
+                        <goal>copy-resources</goal>
                     </goals>
                     <configuration>
-                        <properties>
-                            <property>
-                                <name>module-name</name>
-                                <value>${module-name}</value>
-                            </property>
-                        </properties>
+                        <outputDirectory>${basedir}/target/classes</outputDirectory>
+                        <resources>
+                            <resource>
+                                <directory>src/main/resources</directory>
+                                <filtering>true</filtering>
+                                <includes>
+                                    <include>main.properties</include>
+                                </includes>
+                            </resource>
+                        </resources>
                     </configuration>
                 </execution>
             </executions>
         </plugin>
     </plugins>
-
 </build>
 <dependencies>
     <dependency>
         <groupId>org.eurekaclinical</groupId>
         <artifactId>eurekaclinical-common</artifactId>
         <version>${eurekaclinical-common-version}</version>
-    </dependency>
-    <dependency>
-        <groupId>javax.servlet</groupId>
-        <artifactId>javax.servlet-api</artifactId>
     </dependency>
     <dependency>
         <groupId>com.sun.jersey.jersey-test-framework</groupId>

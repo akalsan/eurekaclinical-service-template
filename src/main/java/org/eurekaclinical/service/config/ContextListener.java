@@ -28,6 +28,7 @@ import org.eurekaclinical.common.config.InjectorSupport;
 import org.eurekaclinical.service.props.ServiceProperties;
 
 import javax.servlet.ServletContextEvent;
+import java.util.ResourceBundle;
 
 /**
  * Created by akalsan on 10/4/16.
@@ -35,7 +36,8 @@ import javax.servlet.ServletContextEvent;
 public class ContextListener extends GuiceServletContextListener {
 	private static final String JPA_UNIT = "service-jpa-unit";
 	private InjectorSupport injectorSupport;
-	ServiceProperties properties = new ServiceProperties(System.getProperty("module-name"));
+	private static final ResourceBundle projectNameProperty=ResourceBundle.getBundle("main");
+	ServiceProperties properties = new ServiceProperties(projectNameProperty.getString("module-name"));
 
 	@Override
 	protected Injector getInjector() {
