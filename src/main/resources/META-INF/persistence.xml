@@ -24,10 +24,6 @@
     <persistence-unit name="service-jpa-unit" transaction-type="RESOURCE_LOCAL">
         <provider>org.hibernate.ejb.HibernatePersistence</provider>
         <non-jta-data-source>java:comp/env/jdbc/Service</non-jta-data-source>
-        <!--
-            <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
-            <jta-data-source>jdbc/EurekaBackend</jta-data-source>
-        -->
         <class>org.eurekaclinical.service.entity.RoleEntity</class>
         <class>org.eurekaclinical.service.entity.UserEntity</class>
         <properties>
