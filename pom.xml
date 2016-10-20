@@ -92,6 +92,10 @@
         <artifactId>eurekaclinical-common</artifactId>
         <version>${eurekaclinical-common-version}</version>
     </dependency>
+    <dependency>
+        <groupId>javax.servlet</groupId>
+        <artifactId>javax.servlet-api</artifactId>
+    </dependency>
 </dependencies>
     <profiles>
         <profile>
